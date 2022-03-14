@@ -26,7 +26,7 @@ class Suit(Enum):
     club = 0
     heart = 1
     diamond = 1
-    def get_index():
+    def get_index(self):
        for i in range(len(Suit)):
            if self.name == Suit(i).name:
                return i
@@ -38,7 +38,7 @@ class Card:
         self.rank = rank
         self.suit = suit
      
-    def get_color():
+    def get_color(self):
         if self.suit is None:
             return None
         elif self.suit.value == 0:
@@ -48,8 +48,8 @@ class Card:
         else:
             raise ValueError('Not a valid color.')
             
-    def get_id():
-        return self.suit.get_index()*12+self.rank.value
+    def get_id(self):
+        return self.suit[1].get_index()*12+self.rank[1].value
         
     def get_match_id():
         return self.suit.value*12+self.rank.value
@@ -95,7 +95,7 @@ class Table:
      def __init__(self, deck):
             for i in range(self.row_num):
                 for j in range(round(self.card_num/self.row_num)):
-                    table_slots[i, j] = deck.stack.pop().get_id()
+                    self.table_slots[i, j] = deck.stack.pop().get_id()
             
 deck = Deck()
 table = Table(deck)
