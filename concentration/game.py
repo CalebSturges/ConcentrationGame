@@ -12,6 +12,12 @@ class Settings:
      if ask_user:
        self.set_settings()
     
+def rectangle_mesh(rownum, colnum, spaces=3):
+  for _ in range(rownum):
+    print(('+' + '- ' * spaces) * colnum + '+')
+    for _ in range(rownum):
+      print(('|' + '  ' * spaces) * colnum + '|')
+  print(('+' + '- ' * spaces) * colnum + '+')
 
 def game(self):
     
