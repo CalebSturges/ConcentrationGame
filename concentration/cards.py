@@ -114,3 +114,6 @@ class Table:
     for i in range(self.get_rownum()):
       for j in range(self.get_colnum()):
         self.table_slots[i, j] = deck.stack.pop().get_id()
+
+   def all_matches_found(self):
+     return self.matched_cards.prod==1
