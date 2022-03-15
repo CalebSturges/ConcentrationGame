@@ -16,8 +16,8 @@ class TestStringMethods(unittest.TestCase):
     
 
   def full_deck(self):
-        self.assertTrue(len(cards.Deck().stack==52))
-        self.assertTrue(len(cards.Deck(jokers=True).stack==54))
+        self.assertTrue(len(cards.Deck().stack)==52)
+        self.assertTrue(len(cards.Deck(jokers=True).stack)==54)
 
     def empty_deck(self):
         s = 'hello world'
