@@ -18,7 +18,7 @@ class Rank(Enum):
   queen = 12
   king = 13
     
-  def describe():
+  def describe(self):
     self.name, self.value
 
 class Suit(Enum):
@@ -30,6 +30,24 @@ class Suit(Enum):
      for i in range(len(Suit)):
        if self.name == Suit(i).name:
          return i
+         
+  def get_unicode(self):
+    #in python 3.10 would use case
+    if self.name == Suit.spade:
+      return '\u2660'
+    elif self.name ==  Suit.club:
+      return '\u2663'
+    elif self.name ==  Suit.heart:
+      return '\u2665'
+    elif self.name == Suit.diamond:
+      return '\u2666'
+    else:
+      ValueError('Not a valid suit.')
+  
+  def describe(self):
+    self.name, self.value 
+
+
 
 class Card:
   def get_color(self):
