@@ -1,4 +1,5 @@
 from concentration import cards
+import string
 
 class Settings:
   jokers = False
@@ -14,10 +15,27 @@ class Settings:
     
 def rectangle_mesh(rownum, colnum, spaces=3):
   for _ in range(rownum):
-    print(('+' + '- ' * spaces) * colnum + '+')
+    print(colnum * ('+' + '- ' * spaces) + '+')
     for _ in range(rownum):
-      print(('|' + '  ' * spaces) * colnum + '|')
-  print(('+' + '- ' * spaces) * colnum + '+')
+      print(colnum * ('|' + '  ' * spaces) + '|')
+  print(colnum * ('+' + '- ' * spaces) + '+')
+
+def rectangle_mesh(rownum, colnum, spaces=3):
+  print("Concentration Game")
+  spaces_1 = ' ' * spaces
+  spaces_2 = '  ' * spaces
+  letters = list(string.ascii_uppercase)[:colnum]
+  column_ids = spaces_2.join(letters) #[s + spaces_2 for s in letters]
+  #column_ids[colnum] = letters[
+  print(spaces_1 + column_ids + spaces_1)
+  for _ in range(rownum):
+    print(colnum * ('+' + '- ' * spaces) + '+')
+    for _ in range(rownum):
+      print(colnum * ('|' + spaces_2) + '|')
+  print(colnum * ('+' + '- ' * spaces) + '+')
+
+rectangle_mesh(4, 13)
+
 
 def game(self):
     
