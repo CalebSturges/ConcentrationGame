@@ -5,7 +5,7 @@ class TestStringMethods(unittest.TestCase):
 
   def enum_card(self):
     self.assertEqual(cards.Suit.spade, cards.Suit['spade'])
-    self.assertEqual(cards.Suit.heart.value, cards.Suit.diamond.value)
+    self.assertEqual(cards.Suit.heart.get_color(), cards.Suit.diamond.get_color())
     with self.assertRaises(ValueError)
       cards.Suit('spade')
 
