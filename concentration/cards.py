@@ -1,4 +1,4 @@
- random
+import random
 from math import floor
 from enum import Enum
 from collections import deque
