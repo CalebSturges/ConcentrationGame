@@ -1,4 +1,4 @@
-from concentration import cards
+from concentration.cards import Rank, Suit, Card, Deck, Table
 import string
 
 class Settings:
@@ -7,45 +7,34 @@ class Settings:
   start_from_last_deck = False
   
   def set_settings(self):
+    pass
     #gui clde goes here
     
   def __init__(self, ask_user = True):
      if ask_user:
        self.set_settings()
-    
-def rectangle_mesh(rownum, colnum, spaces=3):
-  for _ in range(rownum):
-    print(colnum * ('+' + '- ' * spaces) + '+')
-    for _ in range(rownum):
-      print(colnum * ('|' + '  ' * spaces) + '|')
-  print(colnum * ('+' + '- ' * spaces) + '+')
 
-def rectangle_mesh(rownum, colnum, spaces=3):
-  print("Concentration Game")
-  spaces_1 = ' ' * spaces
-  spaces_2 = '  ' * spaces
-  letters = list(string.ascii_uppercase)[:colnum]
-  column_ids = spaces_2.join(letters) #[s + spaces_2 for s in letters]
-  #column_ids[colnum] = letters[
-  print(spaces_1 + column_ids + spaces_1)
-  for _ in range(rownum):
-    print(colnum * ('+' + '- ' * spaces) + '+')
-    for _ in range(rownum):
-      print(colnum * ('|' + spaces_2) + '|')
-  print(colnum * ('+' + '- ' * spaces) + '+')
-
-rectangle_mesh(4, 13)
-
-
-def game(self):
-    
+def pick_cards():
+  card_one = input('For the first card you want to flip give the column letter and row number (highest row is 1) like bingo - e.g. C2, G1, A4:')
+  card_two = input('For the second card you want to flip give the column letter and row number:')
+  print(card_one.upper())
+  return card_one.upper(), card_two.upper()
+  
+def game():
   #ask user for settings
   settings = Settings()
   deck = Deck()
   table = Table(deck)
+  table.display_table()
   roundnum = 0
-  while table.all_matches_found()=False:
-   pick_two()
-   pick_one, pick_two = show_two()
-   update_matched(pick_one, pick_two)
-   
+  while table.all_matches_found()==False:
+    roundnum+=1
+    pick_one, pick_two = pick_cards()
+    card_one = table.get_card(pick_one)
+    card_two = table.get_card(pick_two)
+    table.display_table(show_cards = (card_one, card_two))
+    match = table.update_matched(card_one, card_two)
+    if match:
+      print('You got a match')
+  print('Congrats you have won the game.')
+  
